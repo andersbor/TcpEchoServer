@@ -32,5 +32,14 @@ namespace TcpEchoServer
             writer.Flush();
             socket.Close();
         }
+
+        private static IPAddress GetIpAddressOfThisComputer()
+        // https://www.delftstack.com/howto/csharp/get-local-ip-address-in-csharp/
+        {
+            IPHostEntry ipEntry = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddress = ipEntry.AddressList[0];
+            Console.WriteLine("Your IP address: " + ipAddress);
+            return ipAddress;
+        }
     }
 }
